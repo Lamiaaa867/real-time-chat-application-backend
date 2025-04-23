@@ -1,9 +1,10 @@
+
 import Conversation from "../DB/models/converstaion.model.js";
 import Message from "../DB/models/message.model.js";
-import { decryptMessage} from "../Utils/secureMessages.js";
-import { deriveSharedKey } from "../Utils/generateSymmetricKey.js";
+
 export const sendMessage = async (req, res) => {
   const senderId = req.user._id;
+
   const { receiverId } = req.query;
   const { message } = req.body;
 
@@ -43,17 +44,17 @@ export const getMessages = async (req, res) => {
   }).populate("messages");
   
   if (!conversation) {
-    return res.status(200).json([]);
+    return res.status(400).json({message:""});
   }
   
 
-  const sharedKey = deriveSharedKey( receiverId, senderId)
-  const decryptedMessages = conversation.messages.map((message) => {
+
+  const Messages = conversation.messages.map((message) => {
     return {
       ...message.toObject(), // Ensure proper handling of Mongoose document
-      message: decryptMessage(message.message, sharedKey), // Decrypt the message text
+      message: message.message, // Decrypt the message text
     };
   });
 
-  return res.status(200).json(decryptedMessages);
+  return res.status(200).json(Messages);
 };

@@ -11,7 +11,7 @@ import {app, server} from './socket/socket.js'
 dotenv.config()
 
 conectDB()
-const port=process.env.VITE_BACKPORT||5000
+const port=5000
 
 app.use(express.json())
 app.use(cookieParser())
