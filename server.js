@@ -22,6 +22,6 @@ app.use("/api/auth",authroutes)
 app.use("/api/message",messageroutes)
 
  app.get("/",(req,res,next)=>{
-res.send("hello")
+res.send("you are viewing real time chat app on railway host")
  })
 
