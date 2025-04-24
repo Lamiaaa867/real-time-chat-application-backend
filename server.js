@@ -11,7 +11,7 @@ import {app, server} from './socket/socket.js'
 dotenv.config()
 
 conectDB()
-const port= process.env.PORT|| 5000
+const port= process.env.PORT|| 8080
 
 app.use(express.json())
 app.use(cookieParser())
