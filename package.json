@@ -7,7 +7,6 @@
     "node": "22.11.0"
   },
   "scripts": {
-  
     "server": " node ./server.js ",
     "start": "nodemon ./server.js "
   },
@@ -26,6 +25,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.3",
     "nodemon": "^3.1.10",
+    "rm": "^0.1.8",
     "socket.io": "^4.8.1"
   }
 }
